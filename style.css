@@ -325,7 +325,6 @@ section {
     margin: auto;
 }
 
-/* ✅ FIXED CARD (IMPORTANT CHANGE) */
 .skills-category {
     background: #ffffff;
     padding: 20px;
@@ -419,6 +418,12 @@ section {
 }
 
 /* Projects */
+.projects {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
