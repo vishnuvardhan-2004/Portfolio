@@ -36,19 +36,28 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
+        <div class="container hero-flex">
+
+            <!-- LEFT -->
             <div class="hero-content">
-                <h1>Hi, I'm Vishnu Vardhan</h1>
+                <h3>Hello, It's Me</h3>
+                <h1>Vishnu Vardhan</h1>
                 <h2>Frontend Developer</h2>
-                <p>I create responsive and user-friendly websites with modern technologies. Passionate about clean code and intuitive user experiences.</p>
+                <p>
+                    I create responsive and user-friendly websites with modern technologies.
+                    Passionate about clean code and intuitive user experiences.
+                </p>
+                <!-- MOVE BUTTONS INSIDE -->
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn glow-btn">Get In Touch</a>
+                    <a href="#projects" class="btn glow-btn">View Projects</a>
+                    <a href="Resume.pdf" target="_blank" class="btn glow-btn">Resume</a>
+                </div>
             </div>
+
+            <!-- RIGHT -->
             <div class="hero-image">
-                <img src="profile.jpg" alt="Vishnu Vardhan">
-            </div>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn">Get In Touch</a>
-                <a href="#projects" class="btn secondary">View Projects</a>
-                <button type="button" class="btn"><a href="Resume.pdf" target="_blank">Resume</a></button>
+                <img src="profile.jpg" alt="Vishnu">
             </div>
         </div>
     </section>
@@ -144,7 +153,6 @@
         </div>
     </section>
 
-
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
@@ -155,40 +163,25 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript. 
-                            Showcases my education, skills, projects, certifications, and contact details in a clean layout.</p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
+                        <img src="taskbuddy.png" alt="Task Buddy">
+                        <div class="project-overlay">
+                            <p class="project-desc">
+                                TaskBuddy is a modern task manager built using React. 
+                                It allows users to add, delete, and manage tasks efficiently 
+                                with a clean and responsive UI.
+                            </p>
+                            <div class="project-buttons">
+                                <a href="https://vishnuvardhan-2004.github.io/Taskbuddy/" target="_blank" class="btn glow-btn">View Project</a>
+                                <a href="https://github.com/vishnuvardhan-2004/Taskbuddy" target="_blank" class="btn glow-btn">View Code</a>
+                            </div>
                         </div>
-                        <a href="https://vishnuvardhan-2004.github.io/Portfolio/" target="_blank" class="btn">View Project</a>
-                        <a href="https://github.com/vishnuvardhan-2004/Portfolio" target="_blank" class="btn">View Code</a>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-cloud-sun"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Task Buddy</h3>
-                        <p> TaskBuddy is a modern, front-end task management application built using React (Vite). It showcases
-                             best practices in component design, state lifting, and user experience. Features include adding tasks,
-                            deleting tasks, marking tasks complete/incomplete, filtering/sorting tasks (if implemented), and
-                             persisting tasks in LocalStorage. The UI is responsive, visually approachable, and designed to be
-                             accessible. TaskBuddy is ideal as a portfolio piece to demonstrate competence with React, modular
-                             CSS, and deploying to GitHub Pages..</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>React (with Vite) + JavaScript(ES6+)</span>
-                        </div>
-                        <a href="https://vishnuvardhan-2004.github.io/Taskbuddy/" target="_blank" class="btn">View Project</a>
-                        <a href="https://github.com/vishnuvardhan-2004/Taskbuddy" target="_blank" class="btn">View Code</a>
+                    <h3>Task Buddy</h3>
+
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
                     </div>
                 </div>
             </div>
@@ -271,6 +264,6 @@
             <p>&copy; 2025 Vishnu Vardhan Gangavarapu. All Rights Reserved.</p>
         </div>
     </footer>
-    <script src="scipt.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
