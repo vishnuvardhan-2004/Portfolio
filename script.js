@@ -79,53 +79,100 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 
-// ================= SCROLL ANIMATIONS =================
-function animateOnScroll() {
-    const elements = document.querySelectorAll(
-        '.timeline-content, .skills-category, .project-card, .cert-card'
-    );
+// ================= 🔥 MODERN SCROLL ANIMATION =================
+const animatedElements = document.querySelectorAll(
+    '.section-title, .about-content, .skills-category, .project-card, .timeline-content, .cert-card, .contact-info, .contact-form'
+);
 
-    elements.forEach(el => {
-        const position = el.getBoundingClientRect().top;
-        const screen = window.innerHeight / 1.3;
-
-        if (position < screen) {
-            el.style.opacity = 1;
-            el.style.transform = 'translateY(0)';
-        }
-    });
-}
-
-document.querySelectorAll(
-    '.timeline-content, .skills-category, .project-card, .cert-card'
-).forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease';
+// Add initial hidden state
+animatedElements.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(40px)";
+    el.style.transition = "all 0.8s ease";
 });
 
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.15 });
+
+animatedElements.forEach(el => observer.observe(el));
 
 
-// ================= PROJECT CLICK ANIMATION =================
+// ================= 🔥 HERO TEXT ANIMATION =================
+window.addEventListener("load", () => {
+    const heroText = document.querySelector('.hero-content');
+    const heroImage = document.querySelector('.hero-image');
 
-// Toggle project overlay
+    heroText.style.opacity = "0";
+    heroText.style.transform = "translateX(-50px)";
+    heroText.style.transition = "all 1s ease";
+
+    heroImage.style.opacity = "0";
+    heroImage.style.transform = "translateX(50px)";
+    heroImage.style.transition = "all 1s ease";
+
+    setTimeout(() => {
+        heroText.style.opacity = "1";
+        heroText.style.transform = "translateX(0)";
+    }, 200);
+
+    setTimeout(() => {
+        heroImage.style.opacity = "1";
+        heroImage.style.transform = "translateX(0)";
+    }, 400);
+});
+
+// ================= 🔥 TYPING ANIMATION =================
+const typingText = document.querySelector(".typing-text");
+const words = ["Frontend Developer", "Web Developer"];
+let wordIndex = 0;
+let charIndex = 0;
+
+function type() {
+    if (!typingText) return;
+
+    if (charIndex < words[wordIndex].length) {
+        typingText.textContent += words[wordIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 80);
+    } else {
+        setTimeout(erase, 1500);
+    }
+}
+
+function erase() {
+    if (charIndex > 0) {
+        typingText.textContent = words[wordIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 40);
+    } else {
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, 200);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (typingText) type();
+});
+
+// ================= PROJECT OVERLAY =================
 function toggleProject(element) {
     const allProjects = document.querySelectorAll('.project-img');
 
-    // Close others
     allProjects.forEach(item => {
         if (item !== element) {
             item.classList.remove('active');
         }
     });
 
-    // Toggle clicked one
     element.classList.toggle('active');
 }
 
-// Close when clicking outside
 document.addEventListener('click', function (e) {
     if (!e.target.closest('.project-img')) {
         document.querySelectorAll('.project-img').forEach(item => {
@@ -133,7 +180,6 @@ document.addEventListener('click', function (e) {
         });
     }
 });
-
 
 // ================= FOOTER YEAR =================
 document.addEventListener('DOMContentLoaded', function () {
@@ -144,4 +190,12 @@ document.addEventListener('DOMContentLoaded', function () {
         yearElement.textContent =
             yearElement.textContent.replace(/\d{4}/, currentYear);
     }
+});
+
+// CURSOR GLOW
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
 });

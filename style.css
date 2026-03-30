@@ -51,12 +51,16 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(248, 249, 250, 0.95);
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     transition: var(--transition);
 }
 .dark-mode header {
-    background-color: rgba(19, 28, 38, 0.95);
+    background: rgba(19, 28, 38, 0.6);
+    backdrop-filter: blur(12px);
 }
 nav {
     display: flex;
@@ -137,6 +141,15 @@ nav {
 .hero-content h2 {
     color: var(--secondary);
     margin-bottom: 15px;
+    height: 32px;             
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.typing-text {
+    display: inline-block;
+    width: 260px;             
+    text-align: center;
 }
 /* BASE BUTTON */
 .btn {
@@ -658,7 +671,6 @@ footer {
         font-size: 2.8rem;
     }
     .hero {
-        flex-direction: column-reverse;
         text-align: center;
         padding: 120px 0 80px;
     }
@@ -701,14 +713,68 @@ footer {
         display: block;
         font-size: 1.5rem;
     }
-    h1 {
-        font-size: 2.5rem;
+    .hero-content h1 {
+        font-size: 3rem;      
+        white-space: nowrap;    
+        line-height: 1.2;
+        margin: 4px 0;
     }
     .section-title h2 {
         font-size: 2rem;
     }
-    .hero-buttons {
+    .hero {
+        padding-top: 100px;
+    }
+    .hero-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+    }
+    .hero-content {
+        display: contents;
+    }
+
+    .hero-content h3 {
+        margin: 0 0 4px 0;
+    }
+
+    .hero-content h2 {
+        margin: 4px 0;
+    }
+
+    .hero-content p {
+        margin: 6px 0;
+        padding: 0 10px;
+    }
+    .hero-image {
+        order: 2;
+        margin: 6px 0;
+        display: flex;
         justify-content: center;
+    }
+    .hero-image img {
+        width: 350px;
+        height: 350px;
+    }
+    .hero-buttons {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 6px;
+        width: 100%;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        padding: 10px 0;
+    }
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .skills-category {
+        height: 120px;
+        padding: 15px;
     }
 }
 @media (max-width: 576px) {
@@ -724,4 +790,76 @@ footer {
     .timeline-item {
         padding-left: 50px;
     }
+}
+/* ================= PREMIUM ANIMATIONS ================= */
+
+/* 🌊 BACKGROUND ANIMATION */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(74,108,247,0.08), transparent);
+  animation: bgMove 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes bgMove {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-20%, -20%); }
+  100% { transform: translate(0,0); }
+}
+
+/* 🧊 GLASS NAVBAR */
+header {
+  backdrop-filter: blur(10px);
+}
+
+/* 🎨 GRADIENT NAME */
+.hero-content h1 {
+  background: linear-gradient(45deg, #4a6cf7, #6f42c1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 🖱️ CURSOR GLOW */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: fixed;
+  background: rgba(74,108,247,0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* 🪄 FLOAT IMAGE */
+.hero-image img {
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ✨ BUTTON PREMIUM */
+.btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(74,108,247,0.5);
+}
+
+/* 💎 CARD PREMIUM HOVER */
+.skills-category:hover,
+.project-card:hover,
+.cert-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(74,108,247,0.2);
+}
+
+/* ⚡ SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
 }
