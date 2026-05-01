@@ -6,7 +6,9 @@
     "defaults",
     "not ie 11",
     "not ios_saf <= 26.2",
-    "not safari <= 26.2"
+    "not safari <= 26.2",
+    "not and_ff <= 147",
+    "not firefox <= 147"
   ],
   "hints": {
     "axe/name-role-value": [
